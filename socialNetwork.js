@@ -54,7 +54,6 @@ function listUsersAndFollowers(userbase) {
   }
   console.log(list)
 }
-// listUsersAndFollowers(data)
 
 // Identify who follows the most people
 function mostFollowing(userbase) {
@@ -67,10 +66,30 @@ function mostFollowing(userbase) {
   }
   return((getNamesFromIds(Array(output), userbase)).join())
 }
-console.log(mostFollowing(data))
-
 
 // Identify who has the most followers
+function mostFollowers(userbase) {
+  var output = []
+  var highestFollowers = 0
+  var userData = {}
+  for (user in userbase) {
+    userbase[user].follows.forEach(function(follow) {
+      if (userData[userbase[follow].name] === undefined) {
+        userData[userbase[follow].name] = 1
+      } else {
+      userData[userbase[follow].name] += 1
+      }
+    })
+  }
+  for (user in userData) {
+    if (userData[user] > highestFollowers) highestFollowers = userData[user]
+  }
+  for (user in userData) {
+    if (userData[user] === highestFollowers) output.push(user)
+  }
+  return(output)
+}
+
 // Identify who has the most followers over 30
 // Identify who follows the most people over 30
 // List those who follow someone that doesn't follow them back
