@@ -87,10 +87,14 @@ function mostFollowers(userbase) {
   for (user in userData) {
     if (userData[user] === highestFollowers) output.push(user)
   }
-  return(output)
+  console.log(output)
 }
+mostFollowers(data)
 
 // Identify who has the most followers over 30
+
+
+
 // Identify who follows the most people over 30
 // List those who follow someone that doesn't follow them back
 // List everyone and their reach (sum of # of followers and # of followers of followers)
